@@ -1,6 +1,6 @@
 {
   "name": "kaygnas-vue-property-decorator",
-  "version": "10.0.0-rc.3",
+  "version": "1.0.0",
   "description": "property decorators for Vue Component",
   "main": "lib/index.umd.js",
   "module": "lib/index.js",
