@@ -27,3 +27,11 @@ export function Provide(options?: ProvideOption): VueDecorator {
     }
   })
 }
+
+/**
+ * @deprecated - use Provide({to: 'key', reactive: true}) instead
+ * Decorator for legacy ProvideReactive
+ */
+export function LegacyProvideReactive(key: string | symbol) {
+  return Provide({ to: key, reactive: true })
+}

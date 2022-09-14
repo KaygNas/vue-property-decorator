@@ -25,3 +25,22 @@ export function Inject(
     }
   })
 }
+
+/**
+ * @deprecated - use Inject({from: 'key', default: 'default'}) instead
+ * Decorator for legacy InjectReactive
+ */
+export function LegacyInjectReactive(
+  keyOrOptions: InjectOptions | InjectOptions['from'],
+) {
+  if (
+    typeof keyOrOptions === 'string' ||
+    typeof keyOrOptions === 'undefined' ||
+    typeof keyOrOptions === 'symbol' ||
+    keyOrOptions instanceof Symbol
+  ) {
+    return Inject({ from: keyOrOptions })
+  } else {
+    return Inject(keyOrOptions)
+  }
+}
