@@ -8,26 +8,11 @@ export { Provide, LegacyProvideReactive } from './decorators/Provide'
 export { Ref } from './decorators/Ref'
 export { Watch } from './decorators/Watch'
 
-/**
- * TODO: 完全兼容上个版本的实现 https://github.com/kaorun343/vue-property-decorator
- * - @Prop ✅
- * - @PropSync
- * - @Model -> @LegacyModel ✅
- * - @ModelSync
- * - @Watch ✅
- * - @Provide
- * - @Inject
- * - @ProvideReactive -> @LegacyProvideReactive ✅
- * - @InjectReactive -> @LegacyInjectReactive ✅
- * - @Emit
- * - @Ref ✅
- * - @VModel
- * - @Component ✅
- * - Mixins
- */
-
 import { Options, mixins } from 'vue-class-component'
-/** @alias Options */
+
+/**
+ * @alias Options
+ */
 export const Component = Options
 /** @alias mixins */
 export const Mixins = mixins
