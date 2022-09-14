@@ -1,5 +1,5 @@
 {
-  "name": "vue-property-decorator",
+  "name": "kaygnas-vue-property-decorator",
   "version": "10.0.0-rc.3",
   "description": "property decorators for Vue Component",
   "main": "lib/index.umd.js",
@@ -9,7 +9,7 @@
     "typescript",
     "decorator"
   ],
-  "author": "kaorun343",
+  "author": "KaygNas",
   "license": "MIT",
   "directories": {
     "tests": "tests"
@@ -38,15 +38,15 @@
   "typings": "./lib/index.d.ts",
   "dependencies": {},
   "peerDependencies": {
-    "vue": "*",
-    "vue-class-component": "*"
+    "vue": "^3.0.0",
+    "vue-class-component": "^8.0.0-rc.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kaorun343/vue-property-decorator.git"
+    "url": "git+https://github.com/KaygNas/vue-property-decorator.git"
   },
   "bugs": {
-    "url": "https://github.com/kaorun343/vue-property-decorator/issues"
+    "url": "https://github.com/KaygNas/vue-property-decorator/issues"
   },
-  "homepage": "https://github.com/kaorun343/vue-property-decorator#readme"
+  "homepage": "https://github.com/KaygNas/vue-property-decorator#readme"
 }
