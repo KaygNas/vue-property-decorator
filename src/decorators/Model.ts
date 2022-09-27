@@ -42,8 +42,38 @@ export function Model(
  * @param propOptions the options for the prop
  */
 export function LegacyModel(
-  event: string,
+  inputEventName: string,
   propOptions?: Constructor | Constructor[] | PropOptions,
 ) {
-  return Model('modelValue', propOptions)
+  const propName = 'modelValue';
+  const eventName = `update:${propName}`
+  return createDecorator((componentOptions, key) => {
+    componentOptions.props ||= Object.create(null)
+    componentOptions.props[propName] = propOptions
+
+    componentOptions.computed ||= Object.create(null)
+    componentOptions.computed[key] = {
+      get(this: any) {
+        return this[propName]
+      },
+      set(this: Vue, newValue: any) {
+        this.$emit(eventName, newValue)
+      },
+    }
+
+    let self: Vue
+    componentOptions.emits = Array.isArray(componentOptions.emits) 
+    ? Object.fromEntries(componentOptions.emits.concat(eventName).map(emitName => [emitName, null])) 
+    : { ...(componentOptions.emits ?? {}), [eventName]: null }
+    const created = componentOptions.created 
+    componentOptions.created = function (this: any) {
+      created?.call(this)
+      self = this
+    }
+    // intercept $emit, change inputEventName into update:modelValue
+    componentOptions.emits[inputEventName] = function (this:any, ...payload:any) {
+      self.$emit(eventName, ...payload)
+      return true
+    }
+  })
 }
