@@ -16,9 +16,9 @@ Here's the list:
 (Those with ✅ behind mean they work the same as the previous version.)
 
 - @Prop ✅
-- @PropSync
+- <s>@PropSync</s>
 - @Model -> @LegacyModel ✅
-- @ModelSync
+- <s>@ModelSync</s>
 - @Watch ✅
 - @Provide
 - @Inject
