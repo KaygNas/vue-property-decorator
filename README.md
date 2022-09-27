@@ -10,7 +10,7 @@ This repository is fork from [kaorun343/vue-property-decorator](https://github.c
 - [vue-class-component](https://github.com/vuejs/vue-class-component)
 
 ## Backward Compatible
-Since `vue-property-decorator@8.0.0-rc.1` has multiple breaking change, in order to make migration from vue2 to vue3, some of API in `^7.0.0` are implemented with a prefix **Legacy**, it would make migration easier.
+Since `vue-property-decorator@10.0.0-rc.1` has multiple breaking change, in order to make migration from vue2 to vue3, some of API in `^9.0.0` are implemented with a prefix **Legacy**, it would make migration easier.
 
 Here's the list:
 (Those with ✅ behind mean they work the same as the previous version.)
