@@ -17,16 +17,13 @@ Here's the list:
 
 - @Prop ✅
 - <s>@PropSync</s>
-- @Model -> @LegacyModel ✅
+- @Model ✅
 - <s>@ModelSync</s>
 - @Watch ✅
-- @Provide
-- @Inject
-- @ProvideReactive -> @LegacyProvideReactive ✅
-- @InjectReactive -> @LegacyInjectReactive ✅
+- @ProvideReactive ✅
+- @InjectReactive ✅
 - @Emit ✅
 - @Ref ✅
-- @VModel
 - @Component ✅
 - Mixins ✅
 
