@@ -45,35 +45,47 @@ export function LegacyModel(
   inputEventName: string,
   propOptions?: Constructor | Constructor[] | PropOptions,
 ) {
-  const propName = 'modelValue';
+  const propName = 'modelValue'
   const eventName = `update:${propName}`
-  return createDecorator((componentOptions, key) => {
-    componentOptions.props ||= Object.create(null)
-    componentOptions.props[propName] = propOptions
 
-    componentOptions.computed ||= Object.create(null)
-    componentOptions.computed[key] = {
-      get(this: any) {
-        return this[propName]
-      },
-      set(this: Vue, newValue: any) {
-        this.$emit(eventName, newValue)
-      },
-    }
+  if (inputEventName === eventName) {
+    return Model(propName, propOptions)
+  } else {
+    return createDecorator((componentOptions, key) => {
+      componentOptions.props ||= Object.create(null)
+      componentOptions.props[propName] = propOptions
 
-    let self: Vue
-    componentOptions.emits = Array.isArray(componentOptions.emits) 
-    ? Object.fromEntries(componentOptions.emits.concat(eventName).map(emitName => [emitName, null])) 
-    : { ...(componentOptions.emits ?? {}), [eventName]: null }
-    const created = componentOptions.created 
-    componentOptions.created = function (this: any) {
-      created?.call(this)
-      self = this
-    }
-    // intercept $emit, change inputEventName into update:modelValue
-    componentOptions.emits[inputEventName] = function (this:any, ...payload:any) {
-      self.$emit(eventName, ...payload)
-      return true
-    }
-  })
+      componentOptions.computed ||= Object.create(null)
+      componentOptions.computed[key] = {
+        get(this: any) {
+          return this[propName]
+        },
+        set(this: Vue, newValue: any) {
+          this.$emit(eventName, newValue)
+        },
+      }
+
+      let self: Vue
+      componentOptions.emits = Array.isArray(componentOptions.emits)
+        ? Object.fromEntries(
+            componentOptions.emits
+              .concat(eventName)
+              .map((emitName) => [emitName, null]),
+          )
+        : { ...(componentOptions.emits ?? {}), [eventName]: null }
+      const created = componentOptions.created
+      componentOptions.created = function (this: any) {
+        created?.call(this)
+        self = this
+      }
+      // intercept $emit, change inputEventName into update:modelValue
+      componentOptions.emits[inputEventName] = function (
+        this: any,
+        ...payload: any
+      ) {
+        self.$emit(eventName, ...payload)
+        return true
+      }
+    })
+  }
 }
