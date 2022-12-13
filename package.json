@@ -1,6 +1,6 @@
 {
   "name": "kaygnas-vue-property-decorator",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "property decorators for Vue Component",
   "main": "lib/index.umd.js",
   "module": "lib/index.js",
@@ -17,7 +17,9 @@
   "scripts": {
     "build": "tsc -p ./src/tsconfig.json && rollup -c",
     "test": "jest",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "update:version": "npm version --allow-same-version --git-tag-version ",
+    "publish:npm": "npm run build && npm publish"
   },
   "files": [
     "lib"
